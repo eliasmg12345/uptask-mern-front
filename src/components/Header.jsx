@@ -9,7 +9,7 @@ const Header = () => {
                 </h2>
                 <input
                     type="search"
-                    placeholder="Buscar"
+                    placeholder="Buscar Proyecto"
                     className="rounded-lg lg:w-96 block p-2 border"
                 />
 
