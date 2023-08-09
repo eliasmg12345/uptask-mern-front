@@ -15,6 +15,7 @@ const ProyectosProvider = ({ children }) => {
     const [ModalEliminarTarea, setModalEliminarTarea] = useState(false)
     const [colaborador, setColaborador] = useState({})
     const [modalEliminarColaborador, setModalEliminarColaborador] = useState(false)
+    const [buscador, setBuscador] = useState(false)
 
 
     const navigate = useNavigate();
@@ -430,7 +431,7 @@ const ProyectosProvider = ({ children }) => {
 
             const proyectoActualizado = { ...proyecto }
 
-            proyectoActualizado.tareas = proyectoActualizado.tareas.map(tareaState => tareaState._id === data._id ? data: tareaState)
+            proyectoActualizado.tareas = proyectoActualizado.tareas.map(tareaState => tareaState._id === data._id ? data : tareaState)
 
             setProyecto(proyectoActualizado)
             setAlerta({})
@@ -439,6 +440,10 @@ const ProyectosProvider = ({ children }) => {
         } catch (error) {
             console.log(error.response);
         }
+    }
+
+    const handleBuscador = () => {
+        setBuscador(!buscador)
     }
 
     return (
@@ -466,7 +471,9 @@ const ProyectosProvider = ({ children }) => {
                 handleModalEliminarColaborador,
                 modalEliminarColaborador,
                 eliminarColaborador,
-                completarTarea
+                completarTarea,
+                buscador,
+                handleBuscador
             }}
         >
             {children}
